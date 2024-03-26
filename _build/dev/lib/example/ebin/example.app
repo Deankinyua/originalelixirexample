@@ -1,0 +1,9 @@
+{application,example,
+             [{optional_applications,[]},
+              {applications,[kernel,stdlib,elixir,logger]},
+              {description,"example"},
+              {modules,['Elixir.Example','Elixir.Membership','Elixir.Post',
+                        'Elixir.Unless','Elixir.User']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {mod,{'Elixir.Example',[]}}]}.
