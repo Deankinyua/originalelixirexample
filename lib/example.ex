@@ -47,8 +47,9 @@ defmodule Example do
     # reverseList2([1, 2, 3])
     # keywordListExample()
     # mapFunctions()
-    Unless.fun_unless(true, do: IO.puts "this should never be printed")
-    Unless.macro_unless(true, do: IO.puts "this should never be printed")
+    # Unless.fun_unless(true, do: IO.puts "this should never be printed")
+    # Unless.macro_unless(true, do: IO.puts "this should never be printed")
+    get_token("foo=bar&token=value&bar=baz")
     Supervisor.start_link([], strategy: :one_for_one)
   end
 
@@ -176,6 +177,10 @@ defmodule Example do
     grades = [1, true, 20, false, 3, true]
     [head | tail] = grades
 
+    listeg = [2, 3, 4]
+    listeg2 = [1 | listeg]
+    IO.inspect(listeg2)
+
     # * Lists in Elixir are Linked Lists
     IO.inspect(head)
     IO.inspect(tail)
@@ -292,6 +297,14 @@ defmodule Example do
         user = Map.put(user, :name, "brian")
         IO.inspect(user.name)
 
+      end
+
+      def get_token(string) do
+        parts = String.split(string, "&")
+        Enum.find_value(parts, fn pair ->
+          key_value = String.split(pair, "=")
+          Enum.at(key_value, 0) == "token" && Enum.at(key_value, 1)
+        end)
       end
 
 
